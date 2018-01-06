@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+
+import sys
+import re
+from tkinter import *
+from tkinter import ttk
+from tkinter.font import Font
+from googletrans import Translator as Trans
+
+def translate():
+    trans = Trans()
+    jpn_txt.delete(0.0,END)
+    buf = eng_txt.get(1.0,END)
+    buf = (re.sub('\n',' ',buf))
+    output = trans.translate(buf,dest='ja')
+    output = re.sub('。','。\n',output.text)
+    jpn_txt.insert(1.0,output)
+
+root = Tk()
+root.title("eng2jpn_gui (c) 2018 penguin-knight.")
+root.geometry("1000x1000")
+frame1 = ttk.Frame(root)
+label1 = ttk.Label(frame1, text='English:')
+label2 = ttk.Label(frame1, text='Japanese:')
+button1 = ttk.Button(frame1, text="translate!",command=translate)
+
+# text
+f = Font(size=9)
+eng = StringVar()
+eng_txt = Text(frame1)
+eng_txt.configure(font=f)
+jpn = StringVar()
+jpn_txt = Text(frame1)
+jpn_txt.configure(font=f)
+
+# grid
+frame1.grid(row=0,column=0,sticky=(N,E,S,W))
+label1.grid(row=1,column=1,sticky=E)
+label2.grid(row=2,column=1,sticky=E)
+eng_txt.grid(row=1,column=2,sticky=W)
+jpn_txt.grid(row=2,column=2,sticky=W)
+button1.grid(row=1,column=3,sticky=W)
+
+for child in frame1.winfo_children():
+    child.grid_configure(padx=5,pady=5)
+
+root.mainloop()
