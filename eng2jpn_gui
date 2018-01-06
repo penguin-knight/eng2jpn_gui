@@ -16,6 +16,11 @@ def translate():
     output = re.sub('。','。\n',output.text)
     jpn_txt.insert(1.0,output)
 
+def clear_txt():
+    eng_txt.delete(0.0,END)
+    jpn_txt.delete(0.0,END)
+
+
 root = Tk()
 root.title("eng2jpn_gui (c) 2018 penguin-knight.")
 root.geometry("1000x1000")
@@ -23,6 +28,7 @@ frame1 = ttk.Frame(root)
 label1 = ttk.Label(frame1, text='English:')
 label2 = ttk.Label(frame1, text='Japanese:')
 button1 = ttk.Button(frame1, text="translate!",command=translate)
+button2 = ttk.Button(frame1, text="clear",command=clear_txt)
 
 # text
 f = Font(size=9)
@@ -40,6 +46,7 @@ label2.grid(row=2,column=1,sticky=E)
 eng_txt.grid(row=1,column=2,sticky=W)
 jpn_txt.grid(row=2,column=2,sticky=W)
 button1.grid(row=1,column=3,sticky=W)
+button2.grid(row=2,column=3,sticky=W)
 
 for child in frame1.winfo_children():
     child.grid_configure(padx=5,pady=5)
