@@ -8,23 +8,25 @@
 ```
 python3
 python3-tkinter
-pip3 ($ pip3 install googletrans)
+pip3
 ```
 
 ## 動作確認済み環境
-Cygwin
+Cygwin  
 Fedora27
 
 ## セットアップ
 ### Cygwin
 1. install xinit python3 pip3 python3-tkinter
-2. `$ sh Cygwin_setup.sh`
-3. `$ export DISPLAY=:0.0`
-3. `$ ./eng2jpn_gui`
+2. `$ pip3 install googletrans`
+3. `$ run xwin -multiwindow`
+4. `$ export DISPLAY=:0.0`
+5. `$ ./eng2jpn_gui`
 
-### Fedora27
+### Linux
 1. install python3 pip3 python3-tkinter
-2. `$ ./eng2jpn_gui`
+2. `$ pip3 install googletrans`
+3. `$ ./eng2jpn_gui`
 
 ## 使い方
 1. English欄に英文を入力する．（改行が変に入っててもOK）
