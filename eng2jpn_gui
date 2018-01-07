@@ -20,35 +20,38 @@ def clear_txt():
     eng_txt.delete(0.0,END)
     jpn_txt.delete(0.0,END)
 
-
 root = Tk()
 root.title("eng2jpn_gui (c) 2018 penguin-knight.")
-root.geometry("1000x1000")
+root.geometry("1800x600")
+
+# frame
 frame1 = ttk.Frame(root)
-label1 = ttk.Label(frame1, text='English:')
-label2 = ttk.Label(frame1, text='Japanese:')
-button1 = ttk.Button(frame1, text="translate!",command=translate)
-button2 = ttk.Button(frame1, text="clear",command=clear_txt)
 
 # text
-f = Font(size=9)
+f = Font(size=10)
 eng = StringVar()
-eng_txt = Text(frame1)
-eng_txt.configure(font=f)
+eng_txt = Text(frame1,font=f)
 jpn = StringVar()
-jpn_txt = Text(frame1)
-jpn_txt.configure(font=f)
+jpn_txt = Text(frame1,font=f)
+
+# label
+label1 = ttk.Label(frame1, text='English:',font=f)
+label2 = ttk.Label(frame1, text='Japanese:',font=f)
+
+# button
+button1 = ttk.Button(frame1,text="translate!",command=translate,width=100)
+button2 = ttk.Button(frame1,text="clear",command=clear_txt,width=100)
 
 # grid
 frame1.grid(row=0,column=0,sticky=(N,E,S,W))
-label1.grid(row=1,column=1,sticky=E)
-label2.grid(row=2,column=1,sticky=E)
-eng_txt.grid(row=1,column=2,sticky=W)
-jpn_txt.grid(row=2,column=2,sticky=W)
-button1.grid(row=1,column=3,sticky=W)
-button2.grid(row=2,column=3,sticky=W)
+label1.grid(row=0,column=0,sticky=W)
+label2.grid(row=0,column=1,sticky=W)
+eng_txt.grid(row=1,column=0,sticky=W)
+jpn_txt.grid(row=1,column=1,sticky=W)
+button1.grid(row=2,column=0,sticky=W)
+button2.grid(row=2,column=1,sticky=W)
 
 for child in frame1.winfo_children():
-    child.grid_configure(padx=5,pady=5)
+    child.grid_configure(padx=2,pady=2)
 
 root.mainloop()
